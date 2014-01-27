@@ -1,0 +1,9 @@
+#!/usr/bin/env ruby
+
+require 'pcurl'
+
+pcurl = PcURL::Request.new
+
+request_url = ARGV[0]
+
+pcurl.request request_url

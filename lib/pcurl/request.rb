@@ -5,7 +5,9 @@ module PcURL
     def request(url)
       response = get url
       parsed_response = parse_response response
-      puts prettify(parsed_response)
+      pretty_response = prettify(parsed_response)
+      puts pretty_response
+      pretty_response
     end
 
     def get(url)
@@ -13,7 +15,11 @@ module PcURL
     end
 
     def parse_response(response)
-      JSON.parse response
+      begin
+        JSON.parse response
+      rescue
+        raise "JSON parsing exception for response: #{response}"
+      end
     end
 
     def prettify(response)
